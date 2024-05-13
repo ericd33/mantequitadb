@@ -1,13 +1,24 @@
 package main
 
 import (
-	D "mantequitadb/src/database"
+	"flag"
+	// "fmt"
+	"mantequitadb/src/parser"
+	// D "mantequitadb/src/database"
 )
 
 var Debug bool = true
 
 func main() {
-	db := D.New("Roberto")
-	db.Create("first")
+	cmdQuery := flag.String("q", "", "")
+	flag.Parse()
+
+	if cmdQuery != nil {
+		parser.ParseQueryCommand(string(*cmdQuery))
+	}
+
+	// fmt.Printf("my cmd: \"%v\"\n", string(*cmd))
+	// db := D.New("Roberto")
+	// db.Create("first")
 	// db.Load("hola")
 }
